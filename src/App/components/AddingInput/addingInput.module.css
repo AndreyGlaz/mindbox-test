@@ -1,0 +1,13 @@
+.addingInputRoot {
+    display: flex;
+}
+
+.addingInputRoot > input, .addingInputRoot > span {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.addingInputRoot > button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
