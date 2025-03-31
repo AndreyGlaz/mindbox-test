@@ -3,6 +3,7 @@ import { Button, Checkbox, CheckboxChangeEvent, List, message, Segmented, Typogr
 import { DeleteOutlined } from '@ant-design/icons';
 import { AddingInput } from './components'
 import { FilterValue } from './types'
+import { addItemToState, deleteItemFromState } from './utils';
 import styles from './app.module.css'
 
 const { Title } = Typography
@@ -17,15 +18,17 @@ export const App = () => {
 
     const handleCheckItem = (itemText: string) => (e: CheckboxChangeEvent) => {
         if (e.target.checked) {
-            setTodoItems((prevValue) => new Set([...prevValue].filter(item => item !== itemText)))
-            setCompletedTodoItems((prevValue) => new Set([...prevValue, itemText]))
+            deleteItemFromState(itemText, setTodoItems)
+            addItemToState(itemText, setCompletedTodoItems)
         } else {
-            setTodoItems((prevValue) => new Set([...prevValue, itemText]))
-            setCompletedTodoItems((prevValue) => new Set([...prevValue].filter(item => item !== itemText)))
+            deleteItemFromState(itemText, setCompletedTodoItems)
+            addItemToState(itemText, setTodoItems)
         }
     }
 
     const handleAddItem = (itemText: string) => {
+        if (!itemText) return
+
         if (todoItems.has(itemText)) {
             messageApi.warning('Such todo item already exists in the list')
             return
@@ -36,16 +39,16 @@ export const App = () => {
             return
         }
 
-        setTodoItems((prevValue) => new Set([...prevValue, itemText]))
+        addItemToState(itemText, setTodoItems)
     }
 
     const handleDeleteItem = (itemText: string) => () => {
         if (todoItems.has(itemText)) {
-            setTodoItems((prevValue) => new Set([...prevValue].filter(item => item !== itemText)))
+            deleteItemFromState(itemText, setTodoItems)
         }
 
         if (completedTodoItems.has(itemText)) {
-            setCompletedTodoItems((prevValue) => new Set([...prevValue].filter(item => item !== itemText)))
+            deleteItemFromState(itemText, setCompletedTodoItems)
         }
     }
 
