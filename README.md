@@ -2,7 +2,10 @@
 
 ToDo-приложение, позволяющее управлять текущим списком дел
 
+**Стенд на GitHub Pages:** https://andreyglaz.github.io/mindbox-test/
+
 - Сборщик - [Vite](https://vite.dev/) 
 - UI-lib - [AntDesign](https://ant.design/)
 
-Запуск приложения: `npm i && npm run start`
+Запуск приложения: `npm i && npm run start` \
+Запуск тестов `npm run test`
