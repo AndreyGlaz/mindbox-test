@@ -11,5 +11,6 @@ export default {
     },
     moduleNameMapper: {
         "\\.(css|less|scss)$": "identity-obj-proxy"
-    }
+    },
+    setupFilesAfterEnv: ['<rootDir>/src/configs/jest.setup.ts']
 }

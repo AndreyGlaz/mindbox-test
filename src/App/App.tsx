@@ -70,7 +70,17 @@ export const App = () => {
     }
 
     const renderListItem = (item: string) =>
-        <List.Item key={item} extra={<Button size='small' type='text' icon={<DeleteOutlined />} onClick={handleDeleteItem(item)} />}>
+        <List.Item
+            key={item}
+            data-testid={`list-item-for ${item}`}
+            extra={<Button
+                size='small'
+                type='text'
+                aria-label='Delete'
+                icon={<DeleteOutlined />}
+                onClick={handleDeleteItem(item)}
+            />}
+        >
             <Checkbox checked={completedTodoItems.has(item)} onChange={handleCheckItem(item)}>
                 {item}
             </Checkbox>
