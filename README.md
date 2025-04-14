@@ -8,4 +8,5 @@ ToDo-приложение, позволяющее управлять текущ�
 - UI-lib - [AntDesign](https://ant.design/)
 
 Запуск приложения: `npm i && npm run start` \
-Запуск тестов `npm run test`
+Запуск тестов `npm run test` \
+Настройка git hooks (pre-commit): `npm run preinstall`
